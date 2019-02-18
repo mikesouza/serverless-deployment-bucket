@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+example/
+.serverless/
+.serverless_plugins/
+
+.editorconfig
+*.tgz
