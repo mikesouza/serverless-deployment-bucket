@@ -18,6 +18,10 @@ This plugin will create your custom deployment bucket if it doesn't exist, and o
 
 This plugin also provides the optional ability to enable versioning of bucket objects, however this is not enabled by default since Serverless tends to keep its own copies and versions of state.
 
+## Install
+
+`npm install serverless-deployment-bucket --save-dev`
+
 ## Configuration
 
 Add the plugin to your `serverless.yml`:
