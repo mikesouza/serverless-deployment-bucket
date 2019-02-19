@@ -50,6 +50,6 @@ custom:
 
 ## Usage
 
-Configuration of your `serverless.yml` is all that is need.
+Configuration of your `serverless.yml` is all you need.
 
 There are no custom commands, just run: `sls deploy`
