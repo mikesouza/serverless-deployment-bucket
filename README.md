@@ -2,20 +2,32 @@
 
 Create and configure the custom Serverless deployment bucket.
 
-This plugin will create the S3 deployment bucket you've specified in your provider configuration if it doesn't exist.
-It will also correctly apply default SSE encryption to the bucket, whereas Serverless only applies SSE to the files it creates in the bucket if you specify a custom deployment bucket.
-An option is provided to apply versioning to the deployment bucket as well.
+## Purpose
 
-## Usage
+By default, [Serverless](https://https://serverless.com) creates a bucket with a generated name like `<service name>-serverlessdeploymentbuck-1x6jug5lzfnl7` to store your service's stack state. This can lead to many old deployment buckets laying around in your AWS account and your service having more than one bucket created (only one bucket is actually used).
 
-Add plugin to your `serverless.yml`:
+Serverless' AWS provider can be configured to customize aspects of the (deployment bucket)[https://serverless.com/framework/docs/providers/aws/guide/serverless.yml], such as specifying server-side encryption and a custom deployment bucket name. However, server-side encryption is only applied to the objects that Serverless puts into the bucket and is not applied on the bucket itself. Furthermore, if the bucket name you specify doesn't exist, you will encounter an error like:
+
+```text
+Serverless Error ---------------------------------------
+
+  Could not locate deployment bucket. Error: The specified bucket does not exist
+```
+
+This plugin will create your custom deployment bucket if it doesn't exist, and optionally configure the deployment bucket to apply server-side encryption by default on objects, regardless of whether the bucket was created by this plugin and as long as you configure the provider with `serverSideEncryption: AES256`.
+
+This plugin also provides the optional ability to enable versioning of bucket objects, however this is not enabled by default since Serverless tends to keep its own copies and versions of state.
+
+## Configuration
+
+Add the plugin to your `serverless.yml`:
 
 ```yaml
 plugins:
   - serverless-deployment-bucket
 ```
 
-Configure the provider to use a custom deployment bucket in your `serverless.yaml`:
+Configure the AWS provider to use a custom deployment bucket:
 
 ```yaml
 provider:
@@ -24,7 +36,7 @@ provider:
     serverSideEncryption: AES256
 ```
 
-Add custom configuration to your `serverless.yml`:
+Optionally add custom configuration properties:
 
 ```yaml
 custom:
@@ -35,3 +47,9 @@ custom:
 | Property     | Required | Type      | Default | Description                                |
 |--------------|----------|-----------|---------|--------------------------------------------|
 | `versioning` |  `false` | `boolean` | `false` | Enable versioning on the deployment bucket |
+
+## Usage
+
+Configuration of your `serverless.yml` is all that is need.
+
+There are no custom commands, just run: `sls deploy`
