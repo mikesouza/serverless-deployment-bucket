@@ -6,7 +6,7 @@ Create and configure the custom Serverless deployment bucket.
 
 By default, [Serverless](https://https://serverless.com) creates a bucket with a generated name like `<service name>-serverlessdeploymentbuck-1x6jug5lzfnl7` to store your service's stack state. This can lead to many old deployment buckets laying around in your AWS account and your service having more than one bucket created (only one bucket is actually used).
 
-Serverless' AWS provider can be configured to customize aspects of the (deployment bucket)[https://serverless.com/framework/docs/providers/aws/guide/serverless.yml], such as specifying server-side encryption and a custom deployment bucket name. However, server-side encryption is only applied to the objects that Serverless puts into the bucket and is not applied on the bucket itself. Furthermore, if the bucket name you specify doesn't exist, you will encounter an error like:
+Serverless' AWS provider can be configured to customize aspects of the [deployment bucket](https://serverless.com/framework/docs/providers/aws/guide/serverless.yml), such as specifying server-side encryption and a custom deployment bucket name. However, server-side encryption is only applied to the objects that Serverless puts into the bucket and is not applied on the bucket itself. Furthermore, if the bucket name you specify doesn't exist, you will encounter an error like:
 
 ```text
 Serverless Error ---------------------------------------
