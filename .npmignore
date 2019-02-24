@@ -3,6 +3,6 @@ coverage/
 example/
 .serverless/
 .serverless_plugins/
-
+.travis.yml
 .editorconfig
 *.tgz

@@ -1,5 +1,8 @@
 # serverless-deployment-bucket
 
+[![Build Status](https://travis-ci.org/MikeSouza/serverless-deployment-bucket.svg?branch=master)](https://travis-ci.org/MikeSouza/serverless-deployment-bucket)
+[![Coverage Status](https://coveralls.io/repos/github/MikeSouza/serverless-deployment-bucket/badge.svg?branch=master)](https://coveralls.io/github/MikeSouza/serverless-deployment-bucket?branch=master)
+
 Create and configure the custom Serverless deployment bucket.
 
 ## Purpose

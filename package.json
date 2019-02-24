@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest --env node --coverage"
+    "test": "jest --env node --coverage",
+    "coveralls": "jest --env node --coverage --coverageReporters=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   },
   "homepage": "https://github.com/MikeSouza/serverless-deployment-bucket#readme",
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "jest": "^24.1.0",
     "serverless": "^1.37.1"
   },
