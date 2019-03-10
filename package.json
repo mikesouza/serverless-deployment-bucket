@@ -36,7 +36,7 @@
   "homepage": "https://github.com/MikeSouza/serverless-deployment-bucket#readme",
   "devDependencies": {
     "coveralls": "^3.0.3",
-    "jest": "^24.1.0",
+    "jest": "^24.3.0",
     "serverless": "^1.37.1"
   },
   "dependencies": {
