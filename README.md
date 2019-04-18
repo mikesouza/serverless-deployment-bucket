@@ -54,6 +54,7 @@ custom:
 | Property     | Required | Type      | Default | Description                                |
 |--------------|----------|-----------|---------|--------------------------------------------|
 | `versioning` |  `false` | `boolean` | `false` | Enable versioning on the deployment bucket |
+| `enabled`    |  `false` | `boolean` | `true`  | Enable this plugin                         |
 
 ## Usage
 
