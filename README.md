@@ -55,6 +55,7 @@ custom:
 |--------------|----------|-----------|---------|--------------------------------------------|
 | `versioning` |  `false` | `boolean` | `false` | Enable versioning on the deployment bucket |
 | `enabled`    |  `false` | `boolean` | `true`  | Enable this plugin                         |
+| `policy`     |  `false` | `string`  |         | Bucket policy as JSON                      |
 
 ## Usage
 
