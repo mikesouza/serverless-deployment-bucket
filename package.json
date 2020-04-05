@@ -1,0 +1,45 @@
+{
+  "name": "serverless-deployment-bucket",
+  "version": "1.1.1",
+  "description": "Create and configure the Serverless deployment bucket.",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --env node --coverage",
+    "coveralls": "jest --env node --coverage --coverageReporters=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeSouza/serverless-deployment-bucket.git"
+  },
+  "keywords": [
+    "serverless",
+    "serverless framework",
+    "serverless plugin",
+    "serverless plugins",
+    "amazon web services",
+    "aws",
+    "aws s3",
+    "s3",
+    "s3 bucket",
+    "deployment bucket",
+    "serverless bucket",
+    "bucket"
+  ],
+  "author": "Mike Souza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MikeSouza/serverless-deployment-bucket/issues"
+  },
+  "homepage": "https://github.com/MikeSouza/serverless-deployment-bucket#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.9",
+    "jest": "^25.1.0",
+    "serverless": "^1.63.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
+}

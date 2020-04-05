@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - node
+  - 'lts/*'
+cache: npm
+jobs:
+  include:
+    - stage: install
+      name: "Install Dependencies"
+      script: npm install
+    - stage: test
+      name: "Unit Tests + Coverage"
+      script: npm run coveralls
+stages:
+  - install
+  - test
