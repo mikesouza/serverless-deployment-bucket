@@ -15,3 +15,10 @@ plugins:
 custom:
   deploymentBucket:
     versioning: true
+
+resources:
+  Resources:
+    TestBucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: serverless-test-plugin-bucket
