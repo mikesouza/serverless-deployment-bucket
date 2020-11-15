@@ -1,6 +1,13 @@
 name: Tests + Coverage
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - '!develop'
+    - '!master'
+  pull_request:
+    branches:
+    - '**'
 
 jobs:
   test:
@@ -16,7 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    
+
     - name: NPM Install
       run: npm ci
 
@@ -38,3 +45,4 @@ jobs:
       with:
         github-token: ${{ secrets.github_token }}
         parallel-finished: true
+
