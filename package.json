@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest --env node --coverage",
-    "coveralls": "jest --env node --coverage --coverageReporters=text-lcov | coveralls"
+    "test-coverage": "jest --env node --coverage --coverageReporters=text-lcov"
   },
   "repository": {
     "type": "git",
