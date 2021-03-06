@@ -50,14 +50,16 @@ custom:
   deploymentBucket:
     versioning: true
     accelerate: true
+    blockPublicAccess: true
 ```
 
-| Property     | Required | Type      | Default | Description                                  |
-|--------------|----------|-----------|---------|----------------------------------------------|
-| `versioning` |  `false` | `boolean` | `false` | Enable versioning on the deployment bucket   |
-| `accelerate` |  `false` | `boolean` | `false` | Enable acceleration on the deployment bucket |
-| `enabled`    |  `false` | `boolean` | `true`  | Enable this plugin                           |
-| `policy`     |  `false` | `string`  |         | Bucket policy as JSON                        |
+| Property            | Required | Type      | Default | Description                                       |
+|---------------------|----------|-----------|---------|---------------------------------------------------|
+| `versioning`        |  `false` | `boolean` | `false` | Enable versioning on the deployment bucket        |
+| `accelerate`        |  `false` | `boolean` | `false` | Enable acceleration on the deployment bucket      |
+| `enabled`           |  `false` | `boolean` | `true`  | Enable this plugin                                |
+| `policy`            |  `false` | `string`  |         | Bucket policy as JSON                             |
+| `blockPublicAccess` |  `false` | `boolean` | `false` | Block all public access for the deployment bucket |
 
 ## Usage
 
