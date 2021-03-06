@@ -50,6 +50,9 @@ custom:
   deploymentBucket:
     versioning: true
     accelerate: true
+    tags:
+      - Key: Environment
+        Value: production
 ```
 
 | Property     | Required | Type      | Default | Description                                  |
@@ -58,6 +61,7 @@ custom:
 | `accelerate` |  `false` | `boolean` | `false` | Enable acceleration on the deployment bucket |
 | `enabled`    |  `false` | `boolean` | `true`  | Enable this plugin                           |
 | `policy`     |  `false` | `string`  |         | Bucket policy as JSON                        |
+| `tags`       |  `false` | `array`   |         | Bucket tags as an array of key:value objects |
 
 ## Usage
 
