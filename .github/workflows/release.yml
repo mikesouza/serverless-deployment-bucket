@@ -22,7 +22,8 @@ jobs:
       - run: git config --global user.name "Mike Souza"
       - run: git config --global user.email "1017268+MikeSouza@users.noreply.github.com"
       - run: npm version ${{ github.event.inputs.version }}
-      - run: git push
+      - run: git tag ${{ github.event.inputs.version }}
+      - run: git push --tags
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm publish --public
