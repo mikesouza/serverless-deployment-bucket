@@ -1,6 +1,6 @@
 {
   "name": "serverless-deployment-bucket",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Create and configure the Serverless deployment bucket.",
   "main": "lib/index.js",
   "directories": {
