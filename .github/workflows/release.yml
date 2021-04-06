@@ -22,6 +22,7 @@ jobs:
       - run: git config --global user.name "Mike Souza"
       - run: git config --global user.email "1017268+MikeSouza@users.noreply.github.com"
       - run: npm version ${{ github.event.inputs.version }}
+      - run: git commit -m "Bump to ${{ github.event.inputs.version }}"
       - run: git push --tags
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
