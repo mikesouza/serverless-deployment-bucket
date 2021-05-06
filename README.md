@@ -17,7 +17,24 @@ Serverless Error ---------------------------------------
   Could not locate deployment bucket. Error: The specified bucket does not exist
 ```
 
-This plugin will create your custom deployment bucket if it doesn't exist, and optionally configure the deployment bucket to apply server-side encryption by default on objects, regardless of whether the bucket was created by this plugin and as long as you configure the provider with `serverSideEncryption: AES256`.
+This plugin will create your custom deployment bucket if it doesn't exist, and optionally configure the deployment bucket to apply server-side encryption. To support the [AWS S3 API](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html) for encryption you can configure this plugin with the following:
+
+For AES256 (AES256 or AES) server side encryption support:
+
+```yaml
+  deploymentBucket:
+    name: your-custom-deployment-bucket
+    serverSideEncryption: AES256
+```
+
+For KMS (aws:kms or KMS) server side encryption support:
+
+```yaml
+  deploymentBucket:
+    name: your-custom-deployment-bucket
+    serverSideEncryption: KMS
+    kmsKeyID: your-kms-key-id
+```
 
 This plugin also provides the optional ability to enable versioning of bucket objects, however this is not enabled by default since Serverless tends to keep its own copies and versions of state.
 
