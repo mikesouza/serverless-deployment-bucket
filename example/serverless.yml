@@ -2,7 +2,7 @@ service: example-service
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   stage: ${opt:stage, 'development'}
   region: ${opt:region, 'us-east-1'}
   deploymentBucket:
@@ -14,7 +14,9 @@ plugins:
 
 custom:
   deploymentBucket:
-    versioning: true
+    versioning: false
+    accelerate: true
+    blockPublicAccess: true
 
 resources:
   Resources:
