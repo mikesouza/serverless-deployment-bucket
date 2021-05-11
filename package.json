@@ -36,7 +36,7 @@
   "devDependencies": {
     "coveralls": "^3.1.0",
     "jest": "^26.6.3",
-    "serverless": "^2.11.1"
+    "serverless": "^2.41.0"
   },
   "dependencies": {
     "chalk": "^2.4.2"
