@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Id": "S3SecureTransportAndSSEPolicy",
+  "Statement": [
+    {
+      "Sid": "ForceSSLOnlyAccess",
+      "Effect": "Deny",
+      "Principal": { "AWS": "*" },
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::serverless-deployment-bucket-${self:provider.region}-${self:provider.stage}/*",
+      "Condition": {
+        "Bool": { "aws:SecureTransport": false }
+      }
+    },
+    {
+      "Sid": "DenyIncorrectEncryptionHeader",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::serverless-deployment-bucket-${self:provider.region}-${self:provider.stage}/*",
+      "Condition": {
+        "StringNotEquals": {
+          "s3:x-amz-server-side-encryption": "AES256"
+        }
+      }
+    },
+    {
+      "Sid": "DenyUnEncryptedObjectUploads",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::serverless-deployment-bucket-${self:provider.region}-${self:provider.stage}/*",
+      "Condition": {
+        "Null": {
+          "s3:x-amz-server-side-encryption": "true"
+        }
+      }
+    }
+  ]
+}

@@ -16,7 +16,11 @@ custom:
   deploymentBucket:
     versioning: false
     accelerate: true
+    policy: "${file(bucket-policy.json)}"
     blockPublicAccess: true
+    tags:
+      - Key: Environment
+        Value: ${self:provider.stage}
 
 resources:
   Resources:
