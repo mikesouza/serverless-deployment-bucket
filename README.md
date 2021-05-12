@@ -1,6 +1,6 @@
 # serverless-deployment-bucket
 
-[![NPM Downloads](https://img.shields.io/npm/dt/serverless-deployment-bucket)](https://www.npmjs.com/package/serverless-deployment-bucket) [![Build Status](https://travis-ci.org/MikeSouza/serverless-deployment-bucket.svg?branch=master)](https://travis-ci.org/MikeSouza/serverless-deployment-bucket)
+[![NPM Downloads](https://img.shields.io/npm/dt/serverless-deployment-bucket)](https://www.npmjs.com/package/serverless-deployment-bucket) [![Build Status](https://img.shields.io/github/workflow/status/MikeSouza/serverless-deployment-bucket/Release)](https://github.com/MikeSouza/serverless-deployment-bucket)
 [![Coverage Status](https://coveralls.io/repos/github/MikeSouza/serverless-deployment-bucket/badge.svg?branch=master)](https://coveralls.io/github/MikeSouza/serverless-deployment-bucket?branch=master)
 
 Create and configure the custom Serverless deployment bucket.
