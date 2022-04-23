@@ -34,6 +34,15 @@ For `aws:kms` server side encryption support:
     name: your-custom-deployment-bucket
     serverSideEncryption: aws:kms
     kmsKeyID: your-kms-key-id
+    
+For bucket access logging support:
+
+```yaml
+  deploymentBucket:
+    name: your-custom-deployment-bucket
+    accessLog:
+      bucket: "the-already-existing-bucket"
+      prefix: "prefix-to-use-for-these-logs"
 ```
 
 This plugin also provides the optional ability to enable versioning of bucket objects, however this is not enabled by default since Serverless tends to keep its own copies and versions of state.
