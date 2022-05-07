@@ -1,40 +1,89 @@
 name: Testing GitHub Actions
 
 on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        type: string
   push:
     branches:
-    - '!develop'
-    - '!master'
+    - '**'
 
 jobs:
   get-version:
     runs-on: ubuntu-latest
-
     outputs:
-      version: ${{ steps.set-version.outputs.version }}
-
-    steps:
-    - id: set-version
-      run: |
-        echo "::set-output name=version::$(cat package.json | jq '.version')"
-
-  test:
-    needs: get-version
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 16.x]
-
+      current: ${{ steps.get-version.outputs.current }}
+      previous: ${{ steps.get-version.outputs.previous }}
+      changed: ${{ steps.get-version.outputs.changed }}
     steps:
     - uses: actions/checkout@v3
-    # - name: Use Node.js ${{ matrix.node-version }}
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: ${{ matrix.node-version }}
-
+      with:
+        fetch-depth: 0
     - name: Get Version
-      run: echo ${{ needs.get-version.outputs.version }}
+      id: get-version
+      run: |
+        PREV_VERSION=$(git tag | grep -E '^v[0-9]' | sort -V | tail -1 | sed -e "s/^v//")
+        echo "::set-output name=previous::${PREV_VERSION}"
+        echo "Previous = ${PREV_VERSION}"
+
+        CUR_VERSION=$(cat ./package.json | jq -r '.version')
+        if [ ! -z "${{ github.event.inputs.version }}" ]; then
+          CUR_VERSION=${{ github.event.inputs.version }}
+        fi
+        echo "::set-output name=current::${CUR_VERSION}"
+        echo "Current = ${CUR_VERSION}"
+
+        if [ "${CUR_VERSION}" != "${PREV_VERSION}" ]; then
+          echo "::set-output name=changed::1"
+          echo "Changed = 1"
+        else
+          echo "::set-output name=changed::0"
+          echo "Changed = 0"
+        fi
+
+  cut-version:
+    needs: get-version
+    runs-on: ubuntu-latest
+    if: needs.get-version.outputs.changed == 1
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: git config --global user.name "Mike Souza"
+      - run: git config --global user.email "1017268+MikeSouza@users.noreply.github.com"
+      #- run: npm version ${{ needs.get-version.outputs.current }}
+
+
+  # test:
+  #   needs: get-version
+  #   runs-on: ubuntu-latest
+
+  #   # strategy:
+  #   #   matrix:
+  #   #     node-version: [10.x, 12.x, 14.x, 16.x]
+
+  #   steps:
+  #     # - uses: actions/checkout@v3
+  #     # - uses: actions/setup-node@v3
+  #     #   with:
+  #     #     node-version: '16.x'
+  #     #     registry-url: 'https://registry.npmjs.org'
+  #     # - run: npm ci
+  #     # - run: git config --global user.name "Mike Souza"
+  #     # - run: git config --global user.email "1017268+MikeSouza@users.noreply.github.com"
+  #     # - run: npm version ${{ github.event.inputs.version }}
+
+  #     - name: Get Version
+  #       run: |
+  #         echo ${{ needs.get-version.outputs.current }}
+  #         echo ${{ needs.get-version.outputs.previous }}
+  #         echo ${{ needs.get-version.outputs.changed }}
+
 
   #   - name: NPM Install
   #     run: npm ci
