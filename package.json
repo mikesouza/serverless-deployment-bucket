@@ -1,9 +1,10 @@
 {
   "name": "serverless-deployment-bucket",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Create and configure the Serverless deployment bucket.",
   "main": "lib/index.js",
   "directories": {
+    "example": "example",
     "lib": "lib"
   },
   "scripts": {
@@ -36,7 +37,7 @@
   "devDependencies": {
     "coveralls": "^3.1.0",
     "jest": "^26.6.3",
-    "serverless": "^2.41.0"
+    "serverless": "^3.0.0"
   },
   "dependencies": {
     "chalk": "^2.4.2"
