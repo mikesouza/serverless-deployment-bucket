@@ -1,5 +1,7 @@
 service: example-service
 
+frameworkVersion: '3'
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -15,7 +17,6 @@ plugins:
 custom:
   deploymentBucket:
     versioning: false
-    accelerate: true
     policy: "${file(bucket-policy.json)}"
     blockPublicAccess: true
     tags:
