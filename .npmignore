@@ -6,3 +6,4 @@ example/
 .github
 .editorconfig
 *.tgz
+*.spec.js

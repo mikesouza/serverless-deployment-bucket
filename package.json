@@ -1,13 +1,15 @@
 {
   "name": "serverless-deployment-bucket",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Create and configure the Serverless deployment bucket.",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest --env node --coverage"
+    "test": "jest --env node --coverage",
+    "test:w": "jest --env node --coverage --watch",
+    "test:wa": "jest --env node --coverage --watchAll"
   },
   "repository": {
     "type": "git",
@@ -34,11 +36,11 @@
   },
   "homepage": "https://github.com/MikeSouza/serverless-deployment-bucket#readme",
   "devDependencies": {
-    "coveralls": "^3.1.0",
-    "jest": "^26.6.3",
-    "serverless": "^2.41.0"
+    "coveralls": "^3.1.1",
+    "jest": "^29.1.2",
+    "serverless": "^3.22.0"
   },
-  "dependencies": {
-    "chalk": "^2.4.2"
+  "peerDependencies": {
+    "serverless": "^3"
   }
 }
